@@ -3,8 +3,10 @@ project(2DGame)
 
 #list source files to be included in compilation
 add_executable(${PROJECT_NAME} 
-	src/main.cpp
 	external/glad/src/glad.c
+	src/main.cpp
+	src/Application.cpp
+	src/Mesh.cpp
 )
 
 #Run glfw CMakeLists.txt 
