@@ -3,13 +3,14 @@
 
 #include "Application.h"
 #include "Mesh.h"
+#include "Shader.h"
 
 namespace Game {
 	
-	float vertexData[] = {
-		-0.5f, -0.5f, 0.0f,
-     0.5f, -0.5f, 0.0f,
-     0.0f,  0.5f, 0.0f
+	float vertexData[] = { //This will be stored in a separate file
+		-0.1f, -0.1f, 0.0f,
+     0.1f, -0.1f, 0.0f,
+     0.0f,  0.1f, 0.0f
 	};
 	
 	void Application::setupWindow(){
@@ -27,24 +28,38 @@ namespace Game {
 	}
 
 	void framebuffer_resize_callback(GLFWwindow* window, int width, int height) {
-		glViewport(0, 0, width, height);
+		glViewport(0, 0, width, height); //change this to eventHandler
 	}
 
-	void Application::defineCallbacks(){
+
+	void Application::defineCallbacks(){ //Change this tho eventHandler
 		glfwSetFramebufferSizeCallback(m_window, framebuffer_resize_callback);
 	}
 
 	void Application::run(){
+		Scene scene();
+		
+		defineCallbacks(); //EventHandler
 		Mesh player;
+		Shader shader("/home/p/u/dev/2d-game/src/shaders/vertexShader.vert",
+						"/home/p/u/dev/2d-game/src/shaders/fragShader.frag");
 		player.create(vertexData, 9);
+		
 		while(!glfwWindowShouldClose(m_window)){
+			/*
+			 *
+			 *
+			 *
+			 * 
+			*/
 			handleInput();
 			glClearColor( 0.118f, 0.161f, 0.212f,1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 			player.use();
+			shader.use();
 			glDrawArrays(GL_TRIANGLES, 0, player.m_vertexCount);
 			glfwSwapBuffers(m_window); 
-			glfwPollEvents();
+			glfwPollEvents(); //should this be in a eventHandler?
 		}
 	}
 

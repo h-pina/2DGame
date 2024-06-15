@@ -2,8 +2,6 @@
 #include <cstdint>
 
 namespace Game {
-
-
 	struct windowConfig{
 		const uint32_t width = 800;
 		const uint32_t height = 900;

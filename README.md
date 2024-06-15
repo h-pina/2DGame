@@ -18,9 +18,12 @@ I chose to use a subsection of the Hungarian notation, to define only scopes. Va
 - [x] Create a blank window
 - [ ] Render a Triangle from window 
     - [x] Create a Mesh class to store a specified VBA
-    - [ ] Create a Shader class to store and manipulate Shader programs
-- [ ] Define the model transformation matrix for the triangle, and create the projection matrix (maybe store those in their own class? Idk )
-- [ ] Create a InputHandler (or maybe name it a controller?)
-- [ ] Apply texture to the main character (triangle)
+    - [x] Create a Shader class to store and manipulate Shader programs
+- [ ] Move rendering logic to a renderer class?
+    - [ ] Define projection matrix (one for the whole game)
+- [ ] Create GameObject class   
+    - [ ] Attributes: Mesh, texture, shader, Position, speed, ...
+    - [ ] Functions: Can`t think about anything right now 
+
 
     

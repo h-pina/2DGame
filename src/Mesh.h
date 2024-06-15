@@ -1,5 +1,6 @@
 #include <cstddef>
 #include <cstdint>
+
 namespace Game {
 	class Mesh {
 		public:
