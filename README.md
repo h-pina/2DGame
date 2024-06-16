@@ -9,6 +9,7 @@ Apart from a working game, my main objective is to create a well structured proj
 
 I chose to use a subsection of the Hungarian notation, to define only scopes. Variables will be named using camelCase.Also, the followiung prefixes will be used:
 - **g_variableName**: for global variables
+- **c_variableName**: for constant variables
 - **s_variableName**: for static variables
 - **m_variablename**: For class variables
 
@@ -16,11 +17,13 @@ I chose to use a subsection of the Hungarian notation, to define only scopes. Va
 
 - [x] Setup Build System
 - [x] Create a blank window
-- [ ] Render a Triangle from window 
+- [x] Render a Triangle from window 
     - [x] Create a Mesh class to store a specified VBA
     - [x] Create a Shader class to store and manipulate Shader programs
 - [ ] Move rendering logic to a renderer class?
     - [ ] Define projection matrix (one for the whole game)
+
+- [ ] Change Scene class name
 - [ ] Create GameObject class   
     - [ ] Attributes: Mesh, texture, shader, Position, speed, ...
     - [ ] Functions: Can`t think about anything right now 

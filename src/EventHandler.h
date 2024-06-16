@@ -1,15 +1,20 @@
+#pragma once
+#include <GLFW/glfw3.h>
+#include "InputHandler.h"
+#include "Scene.h"
 
 namespace Game {
 
 	class EventHandler {
 	public:
-		EventHandler();
+		EventHandler(GLFWwindow* window, InputHandler* inputHandler);
 		void setupCallbacks();
-
+		void pollEvents();
 	private:
-		void framebufferResizeCallback();
-		void key_callback();
-		void collision_callback(); //idk just invented this one
+		GLFWwindow* m_window;
+		InputHandler* m_inputHandler;
+		static void framebuffer_resize_callback(GLFWwindow* window, int width, int height);
+		static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	};
 
 }

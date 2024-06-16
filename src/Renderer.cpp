@@ -7,7 +7,7 @@
 
 namespace Game {
 
-	Renderer::Renderer(GLFWwindow* window, Scene scene){
+	Renderer::Renderer(GLFWwindow* window, Scene* scene){
 		m_window = window;
 		m_scene = scene;
 	}
@@ -19,19 +19,16 @@ namespace Game {
 		executeDrawCalls();
 
 		glfwSwapBuffers(m_window); 
-		glfwPollEvents(); //should this be in a eventHandler?
 	}
 
+	//TODO: Improve the capabilities of this function
 	void Renderer::executeDrawCalls(){
-		/*for(GameObject go : m_scene.gameObjects){
-			renderGameObject(go);
-		}*/
-	}
-
-	void Renderer::renderGameObject(GameObject go){
-		go.setupGLStateForRender();
-		//call the correct draw function based on
-		// gl.DrawCallSpecs
+		for(GameObject go : m_scene->getGameObjects()){
+			go.m_mesh->use();
+			go.m_shader->use();
+			//go.tex.use();
+			glDrawArrays(GL_TRIANGLES, 0, go.m_mesh->m_vertexCount);
+		}
 	}
 
 

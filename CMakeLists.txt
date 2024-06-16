@@ -8,6 +8,11 @@ add_executable(${PROJECT_NAME}
 	src/Application.cpp
 	src/Mesh.cpp
 	src/Shader.cpp
+	src/GameObject.cpp
+	src/EventHandler.cpp
+	src/InputHandler.cpp
+	src/Renderer.cpp
+	src/Scene.cpp
 )
 
 #Run glfw CMakeLists.txt 

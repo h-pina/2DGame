@@ -1,5 +1,12 @@
+#pragma once
+
 #include "GLFW/glfw3.h"
+#include "InputHandler.h"
+#include "EventHandler.h"
+#include "Renderer.h"
+#include "Scene.h"
 #include <cstdint>
+#include <memory>
 
 namespace Game {
 	struct windowConfig{
@@ -10,16 +17,15 @@ namespace Game {
 
 	class Application {
 		public:
-			void setupWindow();
+			Application();
 			void run();
 
 			~Application();
 		
 		private:
-			void handleInput();
-			void defineCallbacks();
+			
 			windowConfig m_windowConfig;
-			GLFWwindow* m_window;
+			GLFWwindow* m_window = NULL;
 	};
 
 }
