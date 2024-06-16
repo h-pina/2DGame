@@ -90,6 +90,11 @@ namespace Game {
 		glUniform4fv(location, 1 ,glm::value_ptr(value));
 	}
 
+	void Shader::mat4Uniform(const char* name, glm::mat4 value){
+		GLint location = glGetUniformLocation(m_programId, name);
+		glUniformMatrix4fv(location, 1 , false, glm::value_ptr(value));
+	}
+
 	std::string Shader::readFromFile(const char* filePath){
 		std::ifstream fileStream(filePath);
 		std::stringstream ss;

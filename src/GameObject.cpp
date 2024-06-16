@@ -3,8 +3,10 @@
 #include "Shader.h"
 
 namespace Game {
-	//NOTE: Those could be pointers?
-	GameObject::GameObject(Mesh* mesh, Shader* shader){
+	// The Meshes have to be passed by value, so their data is copied and
+	// stored inside the gameObject 
+	GameObject::GameObject(const char* name,Mesh mesh, Shader shader){
+		m_name = name;
 		m_mesh = mesh;
 		m_shader = shader;
 	}

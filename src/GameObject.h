@@ -7,12 +7,13 @@ namespace Game {
 
 	class GameObject {
 	public:
-		Mesh* m_mesh; 
-		Shader* m_shader;
+		std::string m_name; 
+		Mesh m_mesh; 
+		Shader m_shader;
 
 		//GameObject();
 		//GameObject(Mesh mesh);
-		GameObject(Mesh* mesh, Shader* shader);
+		GameObject(const char* name, Mesh mesh, Shader shader);
 		void setupGLStateForRender();
 		void move();
 		

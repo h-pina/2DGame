@@ -13,7 +13,7 @@ namespace Game {
 		Shader shader("/home/p/u/dev/2d-game/src/shaders/vertexShader.vert",
 						"/home/p/u/dev/2d-game/src/shaders/fragShader.frag");
 		player.create(vertexData, 9);
-		GameObject go(&player, &shader);
+		GameObject go("player", player, shader);
 		m_gameObjects.push_back(go);
 	}
 

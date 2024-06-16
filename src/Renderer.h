@@ -3,12 +3,13 @@
 #include <GLFW/glfw3.h>
 #include "Scene.h"
 #include "GameObject.h"
+#include "Application.h"
 
 namespace Game {
 
 	class Renderer {
 		public:
-			Renderer(GLFWwindow* window, Scene* scene);
+			Renderer(GLFWwindow* window,  Scene* scene);
 			void renderFrame();
 
 		private:
