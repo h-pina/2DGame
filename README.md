@@ -20,13 +20,16 @@ I chose to use a subsection of the Hungarian notation, to define only scopes. Va
 - [x] Render a Triangle from window 
     - [x] Create a Mesh class to store a specified VBA
     - [x] Create a Shader class to store and manipulate Shader programs
-- [ ] Move rendering logic to a renderer class?
-    - [ ] Define projection matrix (one for the whole game)
+- [x] Move rendering logic to a renderer class?
+- [ ] Define projection matrix inside renderer (since it is one for the whole game)
+- [ ] Render First Triangle  
+- [ ] Remove commented code from Application.cpp
 
-- [ ] Change Scene class name
-- [ ] Create GameObject class   
-    - [ ] Attributes: Mesh, texture, shader, Position, speed, ...
-    - [ ] Functions: Can`t think about anything right now 
+
+### Current Problems
+
+- The main triangle is being defined, but can`t be rendered. I think it has something todo with the pointers lifecycle
+
 
 
     
