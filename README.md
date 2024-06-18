@@ -33,11 +33,11 @@ I chose to use a subsection of the Hungarian notation, to define only scopes. Va
 - **s_variableName**: for static variables
 - **m_variablename**: For class variables
 
-### Annotations:
-
-
 ### ROADMAP/TODO
 
+This list will both be used to track my progress and to organize my next steps
+
+Step 1 : Base project structures and rendering
 - [x] Setup Build System
 - [x] Create a blank window
 - [x] Render a Triangle from window 
@@ -48,7 +48,31 @@ I chose to use a subsection of the Hungarian notation, to define only scopes. Va
 - [x] Render First Triangle  
 - [x] Remove commented code from Application.cpp
 - [x] Input and EventHandler working
-... Have to create the new tasks 
+- [x] Basic character movement working
+- [ ] **Cleanup and Refactoring (doing)**
+    - Remove Global Header 
+    - Replace raw pointers when possible
+    - Attach player to inputHandler inside constructor
+    - Create Subclass GameObject (Players / Enemies maybe?)
+    - Change Mesh create function to use constructors (one constructor for vbo only and one for index buffers)
+
+
+Step 2 : Core Gameplay 
+- [ ] Polish movement system
+- [ ] Enemies
+- [ ] Collision system
+- [ ] Increasing speed with time
+- [ ] Textures   
+- [ ] VFX
+- [ ] Music and SFX (maybe?)
+
+
+Step 3 - UI
+- [ ] Menu
+- [ ] Points Count
+
+Step 3 - Events and Additional mechanics  
+...
 
 ### Current Problems
 

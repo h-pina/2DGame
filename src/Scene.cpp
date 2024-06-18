@@ -13,12 +13,12 @@ namespace Game {
 		Shader shader("/home/p/u/dev/2d-game/src/shaders/vertexShader.vert",
 						"/home/p/u/dev/2d-game/src/shaders/fragShader.frag");
 		player.create(vertexData, 9);
-		GameObject go("player", player, shader);
+		GameObject go("playertest", player, shader);
 		m_gameObjects.push_back(go);
 	}
 
-	std::vector<GameObject> Scene::getGameObjects(){
-		return m_gameObjects;
+	std::vector<GameObject>* Scene::getGameObjects(){
+		return &m_gameObjects;
 	}	
 
 	

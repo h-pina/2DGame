@@ -1,6 +1,7 @@
 #include <GLFW/glfw3.h>
 #include "EventHandler.h"
 #include "InputHandler.h"
+#include "Globals.h"
 //NOTE: Should I always pass windows on constructor? Or maybe I create a function like
 //Application.getWindow() so it is consistent across classes?? Idk
 namespace Game {
@@ -22,6 +23,8 @@ namespace Game {
 
 	void EventHandler::framebuffer_resize_callback(GLFWwindow* window, int width, int height){
 		glViewport(0, 0, width, height); 
+		g_windowConfig.width = width;
+		g_windowConfig.height = height;
 	}
 
 	void EventHandler::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods){

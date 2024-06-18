@@ -24,7 +24,6 @@ namespace Game {
 	void Mesh::use(){
 		glBindVertexArray(m_vao);
 	}
-
 	//TODO: Create a mesh  destructor
 
 }

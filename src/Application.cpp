@@ -1,3 +1,4 @@
+#include "GameObject.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -33,7 +34,10 @@ namespace Game {
 	void Application::run(){
 		//TODO: Make those variables into class members?
 		Scene scene;
+		
+		auto objs = scene.getGameObjects();
 		InputHandler inputHandler;
+		inputHandler.attachPlayer(&(objs->at(0)));
 		Renderer renderer(m_window,&scene);
 		EventHandler eventHandler(m_window, &inputHandler);
 

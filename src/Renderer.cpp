@@ -28,12 +28,12 @@ namespace Game {
 	//TODO: Improve the capabilities of this function
 	void Renderer::executeDrawCalls(){
 		// Send screen dimensions to ortho
-		glm::mat4 projection = glm::mat4(1.0f);
-		glm::mat4 model = glm::mat4(1.0f);
-		for(GameObject go : m_scene->getGameObjects()){
+		glm::mat4 projection = glm::ortho(0.0f,(float)g_windowConfig.width,0.0f,(float)g_windowConfig.height,-1.0f,1.0f);
+		auto objs = m_scene->getGameObjects();
+		for(GameObject go : *objs){
 			go.m_mesh.use();
 			go.m_shader.use();
-			go.m_shader.mat4Uniform("model",model);
+			go.m_shader.mat4Uniform("model",go.getModelMatrix());
 			go.m_shader.mat4Uniform("projection",projection);
 			//go.tex.use();
 			glDrawArrays(GL_TRIANGLES, 0, go.m_mesh.m_vertexCount);

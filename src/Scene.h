@@ -9,7 +9,7 @@ namespace Game {
 		Scene();  
 		//NOTE: Is this too much boilerplate?
 		void addGameObject(GameObject go);
-		std::vector<GameObject> getGameObjects();
+		std::vector<GameObject>* getGameObjects();
 
 		private:
 			std::vector<GameObject> m_gameObjects;
