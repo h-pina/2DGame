@@ -22,7 +22,6 @@ which uses cmake to build the dependecies and create the executables
 This project requires
 - git 
 - OpenGL (usually already available through your graphics card driver)
-- GLFW, GLAD and GLM (Already built with CMake)
 
 
 ### Code Convetions:
@@ -37,7 +36,7 @@ I chose to use a subsection of the Hungarian notation, to define only scopes. Va
 
 This list will both be used to track my progress and to organize my next steps
 
-Step 1 : Base project structures and rendering
+**Step 1 : Base project structures and rendering**
 - [x] Setup Build System
 - [x] Create a blank window
 - [x] Render a Triangle from window 
@@ -57,7 +56,7 @@ Step 1 : Base project structures and rendering
     - Change Mesh create function to use constructors (one constructor for vbo only and one for index buffers)
 
 
-Step 2 : Core Gameplay 
+**Step 2 : Core Gameplay**
 - [ ] Polish movement system
 - [ ] Enemies
 - [ ] Collision system
@@ -67,16 +66,15 @@ Step 2 : Core Gameplay
 - [ ] Music and SFX (maybe?)
 
 
-Step 3 - UI
+**Step 3 - UI**
 - [ ] Menu
 - [ ] Points Count
 
-Step 3 - Events and Additional mechanics  
+**Step 4 - Events and Additional mechanics**
 ...
 
 ### Current Problems
 
-- The projection and model matrix can be defined and passed to the shaders by uniforms. However I have to understand how to setup the matrix so that the triangles are rendered as I expect. For now, I`ll keep them as identity matrixes
 - I defined a header called "Globals.h" to make some window properties acessible globally. However, I don't like this approach and think I can make it better
 - The code has some annotations marked with "//TODO:" or "//NOTE:". They are points which I think can be improved, but couldn`t think of a better solution yet for them. To see exactly their location you can run:
 ```bash
