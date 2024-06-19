@@ -9,12 +9,12 @@ namespace Game {
 
 	class Renderer {
 		public:
-			Renderer(GLFWwindow* window,  Scene* scene);
+			Renderer(Window& window, Scene& scene);
 			void renderFrame();
 
 		private:
-			GLFWwindow* m_window;
-			Scene* m_scene;
+			Window& m_window;
+			Scene& m_scene;
 
 			void executeDrawCalls();
 			void renderGameObject();

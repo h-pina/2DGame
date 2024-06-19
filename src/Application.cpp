@@ -1,57 +1,31 @@
-#include "GameObject.h"
-#include "glad/glad.h"
+#include "glad/glad.h" 
 #include "GLFW/glfw3.h"
-
 #include "Application.h"
 #include "Scene.h"
 #include "Renderer.h"
 #include "EventHandler.h"
-#include "Globals.h"
+#include <memory>
 
 namespace Game {
-
-	windowConfig g_windowConfig;
-	
-	float vertexData[] = { //This will be stored in a separate file
-		-0.1f, -0.1f, 0.0f,
-     0.1f, -0.1f, 0.0f,
-     0.0f,  0.1f, 0.0f
-	};
-	
-	Application::Application(){
-		glfwInit();
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-		m_window = glfwCreateWindow(g_windowConfig.width, g_windowConfig.height,
-															 g_windowConfig.title, NULL, NULL);
-		glfwMakeContextCurrent(m_window);
-		gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		glViewport(0, 0, g_windowConfig.width, g_windowConfig.height);
+	Application::Application():
+		m_window(std::make_unique<Window>()),
+		m_inputHandler(std::make_unique<InputHandler>()),
+		m_eventHandler(std::make_unique<EventHandler>(m_window.get(), m_inputHandler.get()))
+	{
 	}
 
 	void Application::run(){
-		//TODO: Make those variables into class members?
-		Scene scene;
-		
-		auto objs = scene.getGameObjects();
-		InputHandler inputHandler;
-		inputHandler.attachPlayer(&(objs->at(0)));
-		Renderer renderer(m_window,&scene);
-		EventHandler eventHandler(m_window, &inputHandler);
+		m_eventHandler->setupCallbacks(); 
 
-		eventHandler.setupCallbacks(); 
+		//Since scene can grow as an object, I`ll allocate it on heap.
+		//All the application core instances are allocated on heap. 
+		//The Unique pointers will guarantee its correct lifetime	
+		std::unique_ptr<Scene> scene = std::make_unique<Scene>();
+		std::unique_ptr<Renderer> renderer = std::make_unique<Renderer>(m_window.get(), scene.get());
 		
-		while(!glfwWindowShouldClose(m_window)){
-			renderer.renderFrame();
-			eventHandler.pollEvents();
+		while(!glfwWindowShouldClose(m_window->getGlfwWindow())){
+			renderer->renderFrame();
+			m_eventHandler->pollEvents();
 		}
-	}
-
-	Application::~Application(){
-		glfwTerminate();
-		glfwDestroyWindow(m_window);
-
 	}
 }

@@ -2,7 +2,6 @@
 #include "Mesh.h"
 #include "Shader.h"
 #include "glm/ext/matrix_transform.hpp"
-#include "Globals.h"
 
 namespace Game {
 	// The Meshes have to be passed by value, so their data is copied and

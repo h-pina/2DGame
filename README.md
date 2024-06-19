@@ -32,6 +32,9 @@ I chose to use a subsection of the Hungarian notation, to define only scopes. Va
 - **s_variableName**: for static variables
 - **m_variablename**: For class variables
 
+### Learnings and Annotations 
+
+
 ### ROADMAP/TODO
 
 This list will both be used to track my progress and to organize my next steps
@@ -48,12 +51,12 @@ This list will both be used to track my progress and to organize my next steps
 - [x] Remove commented code from Application.cpp
 - [x] Input and EventHandler working
 - [x] Basic character movement working
-- [ ] **Cleanup and Refactoring (doing)**
-    - Remove Global Header 
-    - Replace raw pointers when possible
-    - Attach player to inputHandler inside constructor
-    - Create Subclass GameObject (Players / Enemies maybe?)
-    - Change Mesh create function to use constructors (one constructor for vbo only and one for index buffers)
+- [x] **Cleanup and Refactoring (doing)**
+    - [x] Remove Global Header
+    - [x] Replace raw pointers when possible --> See Annotations 
+    - [x] Attach player to inputHandler inside constructor --> Not done. Doesn`t make sense since the scene object and the game objects are created after the InputHandler initiazation 
+    - [ ] Create Subclass GameObject (Players / Enemies maybe?)
+    - [ ] Change Mesh create function to use constructors (one constructor for vbo only and one for index buffers)
 
 
 **Step 2 : Core Gameplay**

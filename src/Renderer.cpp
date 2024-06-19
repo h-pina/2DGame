@@ -6,14 +6,14 @@
 #include "glm/ext/matrix_clip_space.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include "Globals.h"
 
 
 namespace Game {
 
-	Renderer::Renderer(GLFWwindow* window, Scene* scene){
-		m_window = window;
-		m_scene = scene;
+	Renderer::Renderer(Window& window, Scene& scene):
+		m_window(window),
+		m_scene(scene)
+	{
 	}
 
 	void Renderer::renderFrame(){
@@ -22,14 +22,16 @@ namespace Game {
 		
 		executeDrawCalls();
 
-		glfwSwapBuffers(m_window); 
+		glfwSwapBuffers(m_window.getGlfwWindow()); 
 	}
 
 	//TODO: Improve the capabilities of this function
 	void Renderer::executeDrawCalls(){
 		// Send screen dimensions to ortho
-		glm::mat4 projection = glm::ortho(0.0f,(float)g_windowConfig.width,0.0f,(float)g_windowConfig.height,-1.0f,1.0f);
-		auto objs = m_scene->getGameObjects();
+		glm::mat4 projection = glm::ortho(0.0f,(float)m_window.getWidth(),
+																			0.0f,(float)m_window.getHeight(),
+																			-1.0f,1.0f);
+		auto objs = m_scene.getGameObjects();
 		for(GameObject go : *objs){
 			go.m_mesh.use();
 			go.m_shader.use();

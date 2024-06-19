@@ -6,10 +6,13 @@ namespace Game {
 	class InputHandler {
 		public:
 			InputHandler() = default;
-			void keyPressed(GLFWwindow* windown, int key, int action ); //TODO: Find a better name--> not necessarily pressed
+
 			void attachPlayer(GameObject* player);
+			void keyPressed(GLFWwindow* windown, int key, int action ); 
+
+			static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 		private:
-			GameObject* m_player = NULL;
+			GameObject* m_player = nullptr; 
 	};
 }

@@ -7,12 +7,11 @@ namespace Game {
 	class Scene{
 		public:	
 		Scene();  
-		//NOTE: Is this too much boilerplate?
 		void addGameObject(GameObject go);
 		std::vector<GameObject>* getGameObjects();
 
 		private:
 			std::vector<GameObject> m_gameObjects;
-
+	     
 	};
 }

@@ -3,15 +3,26 @@
 #include "GameObject.h"
 
 namespace Game {
+	
 	void InputHandler::keyPressed(GLFWwindow* window, int key, int action ){
-		if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS){
+		//At first, the game will operate on `act on press` philosophy 
+		if(action != GLFW_PRESS) 
+			return; 
+
+		if(key == GLFW_KEY_ESCAPE){
 			glfwSetWindowShouldClose(window,GL_TRUE );
+			return;
 		}	
-		if(key == GLFW_KEY_A && action == GLFW_PRESS && m_player != NULL){
-			m_player->move("right");
-		}
-		if(key == GLFW_KEY_D && action == GLFW_PRESS && m_player != NULL){
-			m_player->move("left");
+
+		if(!m_player){
+			switch(key){
+				case GLFW_KEY_A:
+					m_player->move("right");
+					break;
+				case GLFW_KEY_D:
+					m_player->move("left");
+					break;
+			}
 		}
 	}
 
