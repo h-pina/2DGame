@@ -55,9 +55,9 @@ This list will both be used to track my progress and to organize my next steps
     - [x] Remove Global Header
     - [x] Replace raw pointers when possible --> See Annotations 
     - [x] Attach player to inputHandler inside constructor --> Not done. Doesn`t make sense since the scene object and the game objects are created after the InputHandler initiazation 
-    - [ ] Create Subclass GameObject (Players / Enemies maybe?)
-    - [ ] Change Mesh create function to use constructors (one constructor for vbo only and one for index buffers)
-
+    - [x] Create Subclass GameObject (Players / Enemies maybe?)
+    - [x] Change Mesh create function to use constructors (one constructor for vbo only and one for index buffers)
+- [ ] Maybe add a primitives namespace 
 
 **Step 2 : Core Gameplay**
 - [ ] Polish movement system

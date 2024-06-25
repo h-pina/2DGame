@@ -10,8 +10,7 @@ namespace Game {
 			 0.0f,  0.1f, 0.0f
 		};
 		Mesh player;
-		Shader shader("./shaders/vertexShader.vert",
-						"./shaders/fragShader.frag");
+		Shader shader("./shaders/vertexShader.vert", "./shaders/fragShader.frag");
 		player.create(vertexData, 9);
 		GameObject go("playertest", player, shader);
 		m_gameObjects.push_back(go);

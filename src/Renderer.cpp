@@ -10,7 +10,7 @@
 
 namespace Game {
 
-	Renderer::Renderer(Window& window, Scene& scene):
+	Renderer::Renderer(Window* window, Scene* scene):
 		m_window(window),
 		m_scene(scene)
 	{
@@ -22,14 +22,14 @@ namespace Game {
 		
 		executeDrawCalls();
 
-		glfwSwapBuffers(m_window.getGlfwWindow()); 
+		glfwSwapBuffers(m_window->getGlfwWindow()); 
 	}
 
 	//TODO: Improve the capabilities of this function
 	void Renderer::executeDrawCalls(){
 		// Send screen dimensions to ortho
-		glm::mat4 projection = glm::ortho(0.0f,(float)m_window.getWidth(),
-																			0.0f,(float)m_window.getHeight(),
+		glm::mat4 projection = glm::ortho(0.0f,(float)m_window->getWidth(),
+																			0.0f,(float)m_window->getHeight(),
 																			-1.0f,1.0f);
 		auto objs = m_scene.getGameObjects();
 		for(GameObject go : *objs){
@@ -41,7 +41,4 @@ namespace Game {
 			glDrawArrays(GL_TRIANGLES, 0, go.m_mesh.m_vertexCount);
 		}
 	}
-
-
-
 }

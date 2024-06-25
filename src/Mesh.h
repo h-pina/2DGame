@@ -20,19 +20,18 @@ namespace Game {
 
 	class Mesh {
 		public:
-			size_t m_vertexCount = 0;
-			size_t m_indexCount = 0;
+			VertexArray m_vertexArrayConfig;
+			IndexArray m_indexArrayConfig;
 
 			Mesh(VertexArray vertexArray);
-
 			Mesh(VertexArray vertexArray, IndexArray indexArray);
 			
 			void use();
 			void getVAO();
 
 		private:
-			void addVBOToVAO(const float* vertexData, size_t vertexDataSize);
-			void addIndexToVAO(const float* vertexData, size_t vertexDataSize);
+			void addVBOToVAO(VertexArray vertexArray);
+			void addIndexToVAO(IndexArray indexArray);
 			GLuint m_vao;
 	
 

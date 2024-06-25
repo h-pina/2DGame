@@ -1,17 +1,17 @@
 #pragma once
 #include "GameObject.h"
+#include <unordered_map>
 #include <vector>
 
 namespace Game {
 
 	class Scene{
 		public:	
-		Scene();  
-		void addGameObject(GameObject go);
-		std::vector<GameObject>* getGameObjects();
+			Scene();  
 
 		private:
-			std::vector<GameObject> m_gameObjects;
-	     
+			std::unordered_map<uint32_t, GameObject> m_gameObjects;
+
+			void initializeGameObjects();
 	};
 }

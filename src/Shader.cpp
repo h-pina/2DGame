@@ -1,14 +1,17 @@
-#include "Shader.h"
-#include "FileHandler.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include "glm/ext/vector_float2.hpp"
+
 #include <stdexcept>
 #include <vector>
 #include <iostream>
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "Shader.h"
+#include "FileHandler.h"
+
 
 namespace Game {
 
