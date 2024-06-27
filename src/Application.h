@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GLFW/glfw3.h"
+#include "Window.h"
 #include "InputHandler.h"
 #include "EventHandler.h"
 #include "Renderer.h"
@@ -8,16 +8,14 @@
 #include <memory>
 
 namespace Game {
-
-
 	class Application {
 		public:
 			Application();
 			void run();
-			~Application();
-		
 		private:
-			GLFWwindow* m_window = NULL;
+			//NOTE: Allocated on heap since those are the core objects of the program
+			std::unique_ptr<Window> m_window;
+			std::unique_ptr<EventHandler> m_eventHandler;
 	};
 
 }

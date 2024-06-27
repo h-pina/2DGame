@@ -2,29 +2,47 @@
 #include <GLFW/glfw3.h>
 
 #include "Mesh.h"
-#include <cstddef>
+#include <iostream>
 
 namespace Game {
+	Mesh::Mesh(VertexArray vertexArray){
+		m_vertexArrayConfig = vertexArray;
 
-	void Mesh::create(const float* vertexData, size_t dataSize){
-		m_vertexCount = dataSize;
-		GLuint vbo;
 		glGenVertexArrays(1, &m_vao);
+		addVBOToVAO(vertexArray);
+		glBindVertexArray(0); //unbind to avoid conflicts
+	}
+
+	Mesh::Mesh(VertexArray vertexArray, IndexArray indexArray){
+		m_vertexArrayConfig = vertexArray;
+		m_indexArrayConfig = indexArray;
+
+		glGenVertexArrays(1, &m_vao);
+		addVBOToVAO(vertexArray);
+		addIndexToVAO(indexArray);
+		glBindVertexArray(0); //unbind to avoid conflicts
+	}
+	
+	void Mesh::addVBOToVAO(VertexArray vertexArray){
+		GLuint vbo;
 		glGenBuffers(1, &vbo);
 
 		glBindVertexArray(m_vao);
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		
-    glBufferData(GL_ARRAY_BUFFER, dataSize * sizeof(float), vertexData, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glBufferData(GL_ARRAY_BUFFER, vertexArray.count * sizeof(float), vertexArray.data, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 
+													vertexArray.stride, 0); //TODO:How to pass this offset?
 		glEnableVertexAttribArray(0);
-		glBindVertexArray(0); //unbind to avoid conflicts
+	}
+
+	void Mesh::addIndexToVAO(IndexArray indexArray){
+		//TODO
 	}
 
 	void Mesh::use(){
 		glBindVertexArray(m_vao);
 	}
-	//TODO: Create a mesh  destructor
 
 }
 

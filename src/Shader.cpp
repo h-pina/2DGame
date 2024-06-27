@@ -1,19 +1,22 @@
-#include "Shader.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include "glm/ext/vector_float2.hpp"
+
 #include <stdexcept>
-#include <sstream>
-#include <fstream>
 #include <vector>
 #include <iostream>
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "Shader.h"
+#include "FileHandler.h"
+
 
 namespace Game {
 
-	Shader::Shader(const char* vertexPath, const char* fragPath){
+	Shader::Shader(const char* vertexPath, const char* fragPath, std::string name){
+		m_shaderName = name;
 		GLuint vertexId = generateShaderObject(GL_VERTEX_SHADER, vertexPath);
 		GLuint fragId = generateShaderObject(GL_FRAGMENT_SHADER, fragPath);
 
@@ -47,7 +50,7 @@ namespace Game {
 
 	int Shader::generateShaderObject(int shaderType, const char* filePath ){
 		std::string shaderName = shaderType == GL_VERTEX_SHADER ?  "VertexShader" : "Fragment Shader";
-		std::string shaderContent = readFromFile(filePath);
+		std::string shaderContent = FileHandler::readFromFile(filePath);
 		const char* c_shaderContent = shaderContent.c_str(); //TODO: is this naming correct?
 
 		GLuint shaderId = glCreateShader(shaderType);
@@ -95,11 +98,4 @@ namespace Game {
 		glUniformMatrix4fv(location, 1 , false, glm::value_ptr(value));
 	}
 
-	std::string Shader::readFromFile(const char* filePath){
-		std::ifstream fileStream(filePath);
-		std::stringstream ss;
-		ss << fileStream.rdbuf();
-		std::string fileContent = ss.str();
-		return fileContent;
-	}
-	}
+}

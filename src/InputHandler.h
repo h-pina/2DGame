@@ -2,14 +2,11 @@
 
 #include "GLFW/glfw3.h"
 #include "GameObject.h"
-namespace Game {
-	class InputHandler {
-		public:
-			InputHandler() = default;
-			void keyPressed(GLFWwindow* windown, int key, int action ); //TODO: Find a better name--> not necessarily pressed
-			void attachPlayer(GameObject* player);
+#include "Player.h"
 
-		private:
-			GameObject* m_player = NULL;
+namespace Game {
+	namespace InputHandler{
+		void attachPlayer(std::shared_ptr<Player> player);
+		void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	};
 }
