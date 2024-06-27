@@ -10,7 +10,7 @@ namespace Game {
 	Player::Player(Window* window):
 			GameObject("player"){
 
-		float vertexData[] = { //This will be stored in a separate file
+		float vertexData[] = { 
 			-0.1f, -0.1f, 0.0f,
 			 0.1f, -0.1f, 0.0f,
 			 0.0f,  0.1f, 0.0f
@@ -25,7 +25,7 @@ namespace Game {
 
 		m_mesh = std::make_shared<Mesh>(va);
 
-		m_shader =std::make_shared<Shader>("./shaders/vertexShader.vert", "./shaders/fragShader.frag");
+		m_shader =std::make_shared<Shader>("./shaders/vertexShader.vert", "./shaders/fragShader.frag","playerShader");
 		m_modelMatrix = glm::translate(m_modelMatrix,glm::vec3((float)(window->getWidth())/2, (float)(window->getHeight())/9,0.0f));
 		m_modelMatrix = glm::scale(m_modelMatrix, glm::vec3(500,500,0.0));
 	}

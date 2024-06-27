@@ -15,7 +15,8 @@
 
 namespace Game {
 
-	Shader::Shader(const char* vertexPath, const char* fragPath){
+	Shader::Shader(const char* vertexPath, const char* fragPath, std::string name){
+		m_shaderName = name;
 		GLuint vertexId = generateShaderObject(GL_VERTEX_SHADER, vertexPath);
 		GLuint fragId = generateShaderObject(GL_FRAGMENT_SHADER, fragPath);
 

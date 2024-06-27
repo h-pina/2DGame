@@ -23,10 +23,10 @@ namespace Game {
 			if(!m_player){
 				switch(key){
 					case GLFW_KEY_A:
-						m_player->move("right", 1.0f);
+						m_player->move("right", 110000.0f);
 						break;
 					case GLFW_KEY_D:
-						m_player->move("left",1.0f);
+						m_player->move("left",111000.0f);
 						break;
 				}
 			}

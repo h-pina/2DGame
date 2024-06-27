@@ -19,6 +19,5 @@ namespace Game {
 			void executeDrawCalls();
 			void renderGameObject();
 		};
-
 }
 

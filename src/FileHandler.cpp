@@ -4,6 +4,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
+
 namespace FileHandler {
 
 	std::string resolvePath(const char* path){
@@ -13,12 +14,11 @@ namespace FileHandler {
 			getcwd(cwd, sizeof(cwd));
 
 			std::string basePath(cwd);
-			basePath.replace(basePath.end(), basePath.end()-5,"src");
+			basePath.replace(basePath.end()-5, basePath.end(),"src/");
 
-			strPath.replace(strPath.begin(), strPath.begin(),basePath);
+			strPath.replace(strPath.begin(), strPath.begin()+2,basePath);
 
 			return strPath;
-			std::cout << "resolved Path: " << strPath << std::endl;
 		}
 		return strPath;
 	}

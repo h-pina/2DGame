@@ -8,7 +8,7 @@ namespace Game {
 	class Shader {
 		public:
 			Shader() = default;
-			Shader(const char* vertexPath, const char* fragPath);
+			Shader(const char* vertexPath, const char* fragPath, std::string name);
 
 			void use();
 
@@ -17,7 +17,8 @@ namespace Game {
 			void vec4Uniform(const char* name, glm::vec4 value);
 			void mat4Uniform(const char* name, glm::mat4 value);
 
-		private:
+			std::string m_shaderName;
+		private:	
 			GLuint m_programId;
 
 			int generateShaderObject(int shaderType, const char* filePath );

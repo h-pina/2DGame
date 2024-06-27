@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 
 #include "Mesh.h"
+#include <iostream>
 
 namespace Game {
 	Mesh::Mesh(VertexArray vertexArray){
@@ -30,7 +31,7 @@ namespace Game {
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		
     glBufferData(GL_ARRAY_BUFFER, vertexArray.count * sizeof(float), vertexArray.data, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, vertexArray.count, GL_FLOAT, GL_FALSE, 
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 
 													vertexArray.stride, 0); //TODO:How to pass this offset?
 		glEnableVertexAttribArray(0);
 	}
