@@ -9,12 +9,11 @@ namespace Game {
 
 	class EventHandler {
 		public:
-			EventHandler(Window* window, InputHandler* inputHandler);
+			EventHandler(Window* window );
 			void setupCallbacks();
 			void pollEvents();
 		private:
 			Window* m_window;
-			InputHandler* m_inputHandler;
 
 			static void framebuffer_resize_callback(GLFWwindow* window, int width, int height);
 			static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);

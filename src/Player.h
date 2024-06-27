@@ -5,10 +5,10 @@
 #include <cstdint>
 
 namespace Game {
-	class Player : GameObject{
+	class Player : public GameObject{
 
 		public:
-			Player(Window* window, std::shared_ptr<Mesh> mesh, std::shared_ptr<Shader> shader);
+			Player(Window* window);
 			void move(const char* direction, const float amount);
 			void move(const glm::vec3 vector);
 

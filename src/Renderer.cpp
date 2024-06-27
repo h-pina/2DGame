@@ -6,6 +6,7 @@
 #include "glm/ext/matrix_clip_space.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <memory>
 
 
 namespace Game {
@@ -31,14 +32,16 @@ namespace Game {
 		glm::mat4 projection = glm::ortho(0.0f,(float)m_window->getWidth(),
 																			0.0f,(float)m_window->getHeight(),
 																			-1.0f,1.0f);
-		auto objs = m_scene.getGameObjects();
-		for(GameObject go : *objs){
-			go.m_mesh.use();
-			go.m_shader.use();
-			go.m_shader.mat4Uniform("model",go.getModelMatrix());
-			go.m_shader.mat4Uniform("projection",projection);
+std::vector<std::shared_ptr<GameObject>> gameObjects = m_scene->getGameObjects();
+		for(std::shared_ptr<GameObject> go : gameObjects){
+			std::shared_ptr<Mesh> objMesh = go->getMesh();	
+			std::shared_ptr<Shader> objShader = go->getShader();	
+			objMesh->use();
+			objShader->use();
+			objShader->mat4Uniform("model",go->getModelMatrix());
+			objShader->mat4Uniform("projection",projection);
 			//go.tex.use();
-			glDrawArrays(GL_TRIANGLES, 0, go.m_mesh.m_vertexCount);
+			glDrawArrays(GL_TRIANGLES, 0, objMesh->m_vertexArrayConfig.count);
 		}
 	}
 }

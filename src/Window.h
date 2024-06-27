@@ -10,10 +10,12 @@ namespace Game {
 		const char* title = "2D Game";
 	};
 
+
 	class Window {
 		public:
 			Window();
 
+			static WindowConfig s_windowConfig;
 			GLFWwindow* getGlfwWindow();
 			int getWidth();
 			int getHeight();
@@ -22,8 +24,7 @@ namespace Game {
 			~Window();
 		private:
 			//NOTE: Had to make m_windowConfig static because the callback
-			// has to access it	
-			static WindowConfig m_windowConfig;
+			//has to access it	
 			GLFWwindow* m_glfwWindow = nullptr;
 	};
 }

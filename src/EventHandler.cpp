@@ -5,9 +5,8 @@
 //Application.getWindow() so it is consistent across classes?? Idk
 namespace Game {
 
-	EventHandler::EventHandler(Window* window, InputHandler* inputHandler):
-		m_window(window),
-		m_inputHandler(inputHandler)
+	EventHandler::EventHandler(Window* window):
+		m_window(window)
 	{
 	}
 

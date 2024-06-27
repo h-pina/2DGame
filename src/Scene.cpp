@@ -1,19 +1,28 @@
 #include "Scene.h"
-#include "GameObject.h"
+#include "Player.h"
+#include <memory>
 
 namespace Game {
-
-	Scene::Scene(){
-		float vertexData[] = { //This will be stored in a separate file
-			-0.1f, -0.1f, 0.0f,
-			 0.1f, -0.1f, 0.0f,
-			 0.0f,  0.1f, 0.0f
-		};
-		Mesh player;
-		Shader shader("./shaders/vertexShader.vert", "./shaders/fragShader.frag");
-		player.create(vertexData, 9);
-		GameObject go("playertest", player, shader);
-		m_gameObjects.push_back(go);
+	Scene::Scene(Window* window)
+		:	m_window(window)
+	{
+		//Created a separate function to avoid clustering the constructor
+		initializeGameObjects();
 	}
+
+	std::shared_ptr<Player> Scene::getPlayer(){
+		return m_player;
+	}
+	
+	std::vector<std::shared_ptr<GameObject>>& Scene::getGameObjects(){
+		return m_gameObjects;
+	}
+
+	void Scene::initializeGameObjects(){
+		m_player = std::make_shared<Player>(m_window);
+		m_gameObjects.push_back(m_player);
+	}
+
+	
 
 }
